@@ -21,7 +21,7 @@ Este é o repositório do projeto Wumpus Game desenvolvido por Henrique Krause e
 ## Execução
 
 1. Clone o repositório para sua máquina local usando o comando:
-   https://github.com/MauroGomes09/POO.git
+   https://github.com/MauroGomes09/POO-2023
 
 2. Abra o projeto em seu ambiente de desenvolvimento Java.
 
