@@ -41,4 +41,4 @@ Agradecemos ao professor Felipe Marques pela orientação durante o desenvolvime
 Se você tiver alguma dúvida ou sugestão, entre em contato conosco:
 
 - Henrique Krause: [henriquebkrause2312@gmail.com]
-- Mauro Gomes: [seu-email@exemplo.com]
+- Mauro Gomes: [mauroarturmauro@gmail.com]
