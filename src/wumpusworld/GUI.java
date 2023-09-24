@@ -111,7 +111,7 @@ public class GUI implements ActionListener
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         gamepanel = new JPanel();
-        gamepanel.setPreferredSize(new Dimension(1800,790));
+        gamepanel.setPreferredSize(new Dimension(1890,790));
         gamepanel.setBackground(Color.GRAY);
         gamepanel.setLayout(new GridLayout(15,15));
         
@@ -122,7 +122,7 @@ public class GUI implements ActionListener
             for (int i = 0; i < 15; i++)
             {
                 blocks[i][j] = new JPanel();
-                blocks[i][j].setBackground(Color.blue);
+                blocks[i][j].setBackground(Color.red);
 
                 int blockSize = 10;
             
@@ -136,7 +136,7 @@ public class GUI implements ActionListener
         
         //Add buttons panel
         JPanel buttons = new JPanel();
-        buttons.setPreferredSize(new Dimension(720, 740));
+        buttons.setPreferredSize(new Dimension(820, 740));
         buttons.setLayout(new FlowLayout());
         //Status label
         status = new JLabel("", SwingConstants.CENTER);
@@ -160,27 +160,27 @@ public class GUI implements ActionListener
         br.addActionListener(this);
         buttons.add(br);
         JButton bg = new JButton("Pegar");
-        bg.setPreferredSize(new Dimension(45,22));
+        bg.setPreferredSize(new Dimension(95,22));
         bg.setActionCommand("Pegar");
         bg.addActionListener(this);
         buttons.add(bg);
         JButton bc = new JButton("Sair");
-        bc.setPreferredSize(new Dimension(55,22));
+        bc.setPreferredSize(new Dimension(95,22));
         bc.setActionCommand("Sair");
         bc.addActionListener(this);
         buttons.add(bc);
         JButton bs = new JButton("Atirar");
-        bs.setPreferredSize(new Dimension(65,22));
+        bs.setPreferredSize(new Dimension(95,22));
         bs.setActionCommand("Atirar");
         bs.addActionListener(this);
         buttons.add(bs);
-        JButton ba = new JButton("Run Solving Agent");
+        JButton ba = new JButton("Executar Resolução");
         ba.setActionCommand("AGENT");
         ba.addActionListener(this);
         buttons.add(ba);
         //Add a delimiter
         JLabel l = new JLabel("");
-        l.setPreferredSize(new Dimension(200,25));
+        l.setPreferredSize(new Dimension(220,25));
         buttons.add(l);
         //Fill dropdown list
         Vector<String> items = new Vector<String>();
@@ -190,7 +190,7 @@ public class GUI implements ActionListener
             items.add((i+1) + "");
         }
         mapList = new JComboBox(items);
-        mapList.setPreferredSize(new Dimension(180,25));
+        mapList.setPreferredSize(new Dimension(220,25));
         buttons.add(mapList);
         JButton bn = new JButton("New Game");
         bn.setActionCommand("NEW");
