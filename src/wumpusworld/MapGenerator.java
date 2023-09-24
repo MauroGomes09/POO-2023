@@ -34,36 +34,42 @@ public class MapGenerator
       */
     private static void addRandomPit(WorldMap w, Random r)
     {
-        boolean valid = false;
-        while (!valid)
+        for (int i = 0; i < 5; i++)
         {
-            int x = rnd(r);
-            int y = rnd(r);
-            if (!(x == 1 && y == 1) && !w.hasPit(x, y))
+            boolean valid = false;
+            while (!valid)
             {
-                valid = true;
-                w.addPit(x, y);
+                int x = rnd(r);
+                int y = rnd(r);
+                if (!(x == 1 && y == 1) && !w.hasPit(x, y))
+                {
+                    valid = true;
+                    w.addPit(x, y);
+                }
             }
         }
     }
     
-    /**
-     * Adds the Wumpus to a random square.
-     * 
-     * @param w Wumpus World
-     * @param r Randomizer
-     */
+/**
+      * Adiciona o Wumpus a um quadrado aleatório.
+      *
+      * @param w Wumpus Mundo
+      * @param r Randomizador
+      */
     private static void addRandomWumpus(WorldMap w, Random r)
     {
-        boolean valid = false;
-        while (!valid)
+        for (int i = 0; i < 2; i++)
         {
-            int x = rnd(r);
-            int y = rnd(r);
-            if (!(x == 1 && y == 1))
+            boolean valid = false;
+            while (!valid)
             {
-                valid = true;
-                w.addWumpus(x, y);
+                int x = rnd(r);
+                int y = rnd(r);
+                if (!(x == 1 && y == 1))
+                {
+                    valid = true;
+                    w.addWumpus(x, y);
+                }
             }
         }
     }
@@ -76,15 +82,18 @@ public class MapGenerator
      */
     private static void addRandomGold(WorldMap w, Random r)
     {
-        boolean valid = false;
-        while (!valid)
+        for (int i = 0; i < 2; i++)
         {
-            int x = rnd(r);
-            int y = rnd(r);
-            if (!(x == 1 && y == 1))
+            boolean valid = false;
+            while (!valid)
             {
-                valid = true;
-                w.addGold(x, y);
+                int x = rnd(r);
+                int y = rnd(r);
+                if (!(x == 1 && y == 1))
+                {
+                    valid = true;
+                    w.addGold(x, y);
+                }
             }
         }
     }

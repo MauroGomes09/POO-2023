@@ -43,7 +43,6 @@ public class Config
     
    /**
      * Retorna o caminho para o arquivo de mapa.
-     *
      * @return Caminho para o arquivo de mapa, ou uma string vazia se o arquivo não for encontrado.
      */
     public static String getMapfile()
