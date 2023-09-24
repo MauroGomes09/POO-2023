@@ -65,6 +65,7 @@ public class WorldMap
       */
     public int getSize()
     {
+        
         return size;
     }
     

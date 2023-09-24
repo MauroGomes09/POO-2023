@@ -6,12 +6,7 @@ import java.awt.*;
 import java.io.File;
 import java.util.Vector;
 
-/**
- * GUI for the Wumpus World. Only supports worlds of 
- * size 4.
- * 
- * @author Johan Hagelbäck
- */
+
 public class GUI implements ActionListener
 {
     private JFrame frame;
@@ -41,7 +36,7 @@ public class GUI implements ActionListener
     {
         if (!checkResources())
         {
-            JOptionPane.showMessageDialog(null, "Unable to start GUI. Missing icons.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não é possível iniciar a GUI. Ícones ausentes.", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
         
@@ -189,11 +184,11 @@ public class GUI implements ActionListener
         buttons.add(l);
         //Fill dropdown list
         Vector<String> items = new Vector<String>();
+        items.add("Random");
         for (int i = 0; i < maps.size(); i++)
         {
             items.add((i+1) + "");
         }
-        items.add("Random");
         mapList = new JComboBox(items);
         mapList.setPreferredSize(new Dimension(180,25));
         buttons.add(mapList);
@@ -314,7 +309,7 @@ public class GUI implements ActionListener
                 }
                 if (w.isUnknown(i+1, j+1))
                 {
-                    blocks[i][j].setBackground(Color.GRAY);
+                    blocks[i][j].setBackground(Color.cyan);
                 }
                 
                 blocks[i][j].updateUI();

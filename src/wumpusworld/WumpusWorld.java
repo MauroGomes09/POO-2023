@@ -2,7 +2,7 @@ package wumpusworld;
 
 import java.util.Vector;
 /**
-  *Aula inicial do programa Wumpus World. O programa
+  O programa
   * tem três opções: 1) Executar uma GUI onde o Wumpus World possa ser
   * resolvido passo a passo manualmente ou por um agente, ou 2) executar
   * uma simulação com mundos aleatórios em vários jogos,
@@ -75,7 +75,7 @@ public class WumpusWorld {
     private void runSimulator()
     {
         double totScore = 0;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
             WorldMap w = MapGenerator.getRandomMap(i);
             totScore += (double)runSimulation(w.generateWorld());
