@@ -3,31 +3,30 @@ package wumpusworld;
 import java.io.*;
 import java.util.Vector;
 /**
- * This class read maps from a file.
- * 
- * @author Johan Hagelbäck
- */
+  * Esta classe lê mapas de um arquivo.
+
+  */
 public class MapReader
 {
     private Vector<WorldMap> maps;
     private String mapFilename;
     
-    /**
-     * Creates a new instance of the class.
-     */
+   /**
+      * Cria uma nova instância da classe.
+      */
     public MapReader()
     {
         mapFilename = Config.getMapfile();
         maps = new Vector<WorldMap>();
     }
     
-    /**
-     * Read the maps from the map file and returns a Vector
-     * with the maps. The program exits if an error is
-     * encountered.
-     * 
-     * @return A list of map objects, or empty list if none was found. 
-     */
+   /**
+      * Leia os mapas do arquivo de mapa e retorne um vetor
+      * com os mapas. O programa é encerrado se ocorrer um erro
+      * encontrado.
+      *
+      * @return Uma lista de objetos do mapa ou uma lista vazia se nenhum for encontrado.
+      */
     public Vector<WorldMap> readMaps()
     {
         try
@@ -91,7 +90,7 @@ public class MapReader
             
         }
         
-        //Add some random maps
+//Adiciona alguns mapas aleatórios
         maps.add(MapGenerator.getRandomMap(42));
         maps.add(MapGenerator.getRandomMap(1977));
         maps.add(MapGenerator.getRandomMap(1990));
@@ -99,12 +98,12 @@ public class MapReader
         return maps;
     }
     
-    /**
-     * Splits a string with whitespace as delimiter.
-     * 
-     * @param line The string to split
-     * @return Tokens
-     */
+/**
+      * Divide uma string com espaços em branco como delimitador.
+      *
+      * @param line A string a ser dividida
+      * @return Tokens
+      */
     private String[] split(String line)
     {
         return line.split(" ");

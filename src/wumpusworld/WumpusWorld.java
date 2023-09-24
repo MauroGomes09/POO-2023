@@ -2,14 +2,13 @@ package wumpusworld;
 
 import java.util.Vector;
 /**
- * Starting class for the Wumpus World program. The program
- * has three options: 1) Run a GUI where the Wumpus World can be
- * solved step by step manually or by an agent, or 2) run
- * a simulation with random worlds over a number of games,
- * or 3) run a simulation over the worlds read from a map file.
- * 
- * @author Johan Hagelbäck
- */
+  *Aula inicial do programa Wumpus World. O programa
+  * tem três opções: 1) Executar uma GUI onde o Wumpus World possa ser
+  * resolvido passo a passo manualmente ou por um agente, ou 2) executar
+  * uma simulação com mundos aleatórios em vários jogos,
+  * ou 3) executar uma simulação sobre os mundos lidos em um arquivo de mapa.
+ 
+  */
 public class WumpusWorld {
 
     /**
@@ -21,7 +20,7 @@ public class WumpusWorld {
     }
     
     /**
-     * Starts the program.
+     * inicioa o programa 
      * 
      */
     public WumpusWorld()
@@ -43,7 +42,7 @@ public class WumpusWorld {
     }
     
     /**
-     * Starts the program in GUI mode.
+     * inicia o programa no modo gui
      */
     private void showGUI()
     {
@@ -51,9 +50,9 @@ public class WumpusWorld {
     }
     
     /**
-     * Starts the program in simulator mode with
-     * maps read from a data file.
-     */
+      * Inicia o programa em modo simulador com
+      * mapas lidos de um arquivo de dados.
+      */
     private void runSimulatorDB()
     {
         MapReader mr = new MapReader();
@@ -69,10 +68,10 @@ public class WumpusWorld {
         System.out.println("Average score: " + totScore);
     }
     
-    /**
-     * Starts the program in simulator mode
-     * with random maps.
-     */
+   /**
+      * Inicia o programa em modo simulador
+      * com mapas aleatórios.
+      */
     private void runSimulator()
     {
         double totScore = 0;
@@ -85,13 +84,13 @@ public class WumpusWorld {
         System.out.println("Average score: " + totScore);
     }
     
-    /**
-     * Runs the solver agent for the specified Wumpus
-     * World.
-     * 
-     * @param w Wumpus World
-     * @return Achieved score
-     */
+  /**
+      * Executa o agente solucionador para o Wumpus especificado
+      * Mundo.
+      *
+      * @param w Wumpus Mundo
+      * @return Pontuação alcançada
+      */
     private int runSimulation(World w)
     {
         int actions = 0;

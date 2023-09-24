@@ -1,13 +1,12 @@
 package wumpusworld;
 
 /**
- * This class is used by the agent when searchin for new
- * squares to move to. It contains the position for a 
- * square, and a priority. Lower priovalues = higher
- * priority.
- * 
- * @author Johan Hagelbäck
- */
+  *Esta classe é utilizada pelo agente ao buscar novos
+  * quadrados para onde se mover. Ele contém a posição para um
+  * quadrado e uma prioridade. Priovalores mais baixos = mais altos
+  * prioridade.
+
+  */
 public class Location implements Comparable
 {
     /**
@@ -23,12 +22,12 @@ public class Location implements Comparable
      */
     public int prio;
     
-    /**
-     * Creates a new Location instance.
-     * 
-     * @param x X position
-     * @param y Y position
-     */
+   /**
+      * Cria uma nova instância de Local.
+      *
+      * @param x posição X
+      * @param e posição Y
+      */
     public Location(int x, int y)
     {
         this.x = x;
@@ -36,13 +35,13 @@ public class Location implements Comparable
         this.prio = 0;
     }
     
-    /**
-     * Creates a new Location instance.
-     * 
-     * @param x X position
-     * @param y Y position
-     * @param prio Priority value
-     */
+  /**
+      * Cria uma nova instância de Local.
+      *
+      * @param x posição X
+      * @param e posição Y
+      * @param prio Valor de prioridade
+      */
     public Location(int x, int y, int prio)
     {
         this.x = x;
@@ -50,13 +49,13 @@ public class Location implements Comparable
         this.prio = prio;
     }
     
-    /**
-     * Used for sorting lists of possible goals. Lower prio
-     * value = higher priority.
-     * 
-     * @param o Location object.
-     * @return 1 if prio(o) > prio(this). -1 if prio(o) > prio(this). 0 otherwise.
-     */
+  /**
+      * Usado para classificar listas de possíveis objetivos. Prioridade inferior
+      * valor = maior prioridade.
+      *
+      * @param o objeto Localização.
+      * @return 1 if prio(o) > prio(este). -1 se prio(o) > prio(este). 0 caso contrário.
+      */
     public int compareTo(Object o)
     {
         Location l = (Location)o;

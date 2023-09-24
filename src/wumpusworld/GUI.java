@@ -20,7 +20,7 @@ public class GUI implements ActionListener
     private JLabel status;
     private World w;
     private Agent agent;
-    private JPanel[][] blocks;
+    private JPanel[][] blocks = new JPanel[15][15];
     private JComboBox mapList;
     private Vector<WorldMap> maps;
     
@@ -111,26 +111,29 @@ public class GUI implements ActionListener
     private void createWindow()
     {
         frame = new JFrame("Wumpus World");
-        frame.setSize(820, 840);
+        frame.setSize(1920, 1080);
         frame.getContentPane().setLayout(new FlowLayout());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         gamepanel = new JPanel();
-        gamepanel.setPreferredSize(new Dimension(600,600));
+        gamepanel.setPreferredSize(new Dimension(1800,790));
         gamepanel.setBackground(Color.GRAY);
-        gamepanel.setLayout(new GridLayout(4,4));
+        gamepanel.setLayout(new GridLayout(15,15));
         
         //Add blocks
-        blocks = new JPanel[4][4];
-        for (int j = 3; j >= 0; j--)
+        blocks = new JPanel[15][15];
+        for (int j = 14; j >= 0; j--)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 15; i++)
             {
                 blocks[i][j] = new JPanel();
-                blocks[i][j].setBackground(Color.white);
-                blocks[i][j].setPreferredSize(new Dimension(150,150));
+                blocks[i][j].setBackground(Color.blue);
+
+                int blockSize = 10;
+            
+                blocks[i][j].setPreferredSize(new Dimension(blockSize, blockSize));
                 blocks[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
-                blocks[i][j].setLayout(new GridLayout(2,2));
+                blocks[i][j].setLayout(new GridLayout(1,1));
                 gamepanel.add(blocks[i][j]);
             }
         }
@@ -138,7 +141,7 @@ public class GUI implements ActionListener
         
         //Add buttons panel
         JPanel buttons = new JPanel();
-        buttons.setPreferredSize(new Dimension(820, 840));
+        buttons.setPreferredSize(new Dimension(720, 740));
         buttons.setLayout(new FlowLayout());
         //Status label
         status = new JLabel("", SwingConstants.CENTER);
@@ -276,9 +279,9 @@ public class GUI implements ActionListener
      */
     private void updateGame()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 15; i++)
         {
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 15; j++)
             {
                 blocks[i][j].removeAll();
                 blocks[i][j].setBackground(Color.WHITE);

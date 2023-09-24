@@ -3,16 +3,14 @@ package wumpusworld;
 import java.io.*;
 
 /**
- * Reads the config.txt settings file.
- * 
- * @author admin
+ * lê o arquivo config txt
  */
 public class Config 
 {
-    /**
-     * Checks the options for the application ('gui', 'sim' or 'simdb').
-     * 
-     * @return Option. Default is 'gui'. 
+ /**
+     * Verifica as opções de execução da aplicação (`gui`, `sim` ou `simdb`).
+     *
+     * @return Opção de execução da aplicação. O padrão é `gui`.
      */
     public static String getOption()
     {
@@ -43,10 +41,10 @@ public class Config
         return option;
     }
     
-    /**
-     * Returns the path to the map file.
-     * 
-     * @return Path to map file, or empty string if not found.
+   /**
+     * Retorna o caminho para o arquivo de mapa.
+     *
+     * @return Caminho para o arquivo de mapa, ou uma string vazia se o arquivo não for encontrado.
      */
     public static String getMapfile()
     {

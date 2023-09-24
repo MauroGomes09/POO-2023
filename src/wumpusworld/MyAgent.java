@@ -1,37 +1,33 @@
 package wumpusworld;
 
 /**
- * Contains starting code for creating your own Wumpus World agent. Currently
- * the agent only make a random decision each turn.
- * 
- * @author Johan Hagelbäck
- */
+  * Contém código inicial para criar seu próprio agente Wumpus World. Atualmente
+  * o agente só toma uma decisão aleatória a cada turno.
+  */
 public class MyAgent implements Agent {
 
 	private World w;
 	int rnd;
 	int wumpus = 0, pa = 0, pb = 0, minvalue = 100, t = 1, minscore = 100, k1, op, k = 1, fp = 0;
 	int c2 = 0, c3 = 0, path = 0;
-	int[][] map = new int[4][4];
+	int[][] map = new int[15][15];
 	int[] b = new int[10];
 	int pbb = 0;
 	int pd = 0;
 	int path1 = 0;
-
-	/**
-	 * Creates a new instance of your solver agent.
-	 * 
-	 * @param world Current world statea
-	 */
+/**
+* Cria uma nova instância do seu agente solucionador.
+*
+* @param world Estado atual do mundo
+*/
 	public MyAgent(World world) {
 		w = world;
 	}
 
 //-----------------------------------------------------------------
-
-	// Direct Method which takes integer as input
-	// [ possible values :1-Right,2-Left,3-Up,4-down]
-	// 12+4 possibilities
+//Método direto que recebe inteiro como entrada
+// [valores possíveis: 1-Direita,2-Esquerda,3-Cima,4-baixo]
+// 12+4 possibilidades
 	public void direction(int x) {
 		int i = 0, dif;
 
@@ -76,9 +72,9 @@ public class MyAgent implements Agent {
 
 // -----------------------------------------------------------------
 
-	// Shoot arrow method which takes direction as input shoots the wumpus
-	// [ possible values :1-Right,2-Left,3-Up,4-down]
-	// 12+4 possibilities
+// Método de atirar flecha que toma direção conforme a entrada atira no wumpus
+// [valores possíveis: 1-Direita,2-Esquerda,3-Cima,4-baixo]
+// 12+4 possibilidades
 	public void arrow(int x) {
 		int i = 0, dif;
 
@@ -121,11 +117,10 @@ public class MyAgent implements Agent {
 	}
 
 //-------------------------------------------------------------------------------------------	
-
-	// it will provide a shortest path between the current node and destination node
-	// this method is used when the game is left with very less unvisited nodes.
-	// and also it is safe path
-	// it will fall on pit if there is no path exists
+// fornecerá um caminho mais curto entre o nó atual e o nó de destino
+// este método é usado quando o jogo fica com muito menos nós não visitados.
+// e também é um caminho seguro
+// ele cairá no poço se não existir nenhum caminho
 	public void pathDestination(int[][] map, int[] a, int x, int y, int c1, int move, int score, int fx, int fd) {
 
 		int k;
@@ -229,8 +224,8 @@ public class MyAgent implements Agent {
 
 //-------------------------------------------------------------------------------------------	
 
-	// if all the surrounded unvisited nodes contain breezes it gives the optimal
-	// path with less probability
+// se todos os nós não visitados cercados contiverem brisas, isso dará o valor ideal
+//caminho com menor probabilidade
 
 	public void pathbreeze(int[][] map, int[] a, int x, int y, int c1, int move) {
 		int l = 0;
@@ -383,7 +378,7 @@ public class MyAgent implements Agent {
 
 //-------------------------------------------------------------------------------------------	
 
-	// it will find the best path to unvisited safe node.
+// encontrará o melhor caminho para o nó seguro não visitado.
 	public void path(int[][] map, int[] a, int x, int y, int c1, int move) {
 
 		if (x <= 3 && y <= 3 && x >= 0 && y >= 0)
@@ -499,10 +494,9 @@ public class MyAgent implements Agent {
 	}
 
 //-------------------------------------------------------------------------------------------	
-
-	// if the box contains both the breeze and stench the methid will be executed
-	// will see the probabilities of adjacent blocks and move accordingly
-	// and update the probabilities to the adjacent boxes.
+// se a caixa contiver tanto a brisa quanto o fedor o metid será executado
+// verá as probabilidades dos blocos adjacentes e se moverá de acordo
+// e atualize as probabilidades para as caixas adjacentes.
 	public void breezeAndStrenchMethod(int[][] map, int cX, int cY, int x, int y) {
 		int count = 0, Y = 0, X = 0, t1 = 0, d = 0, count1 = 0, d1 = 0;
 
@@ -833,8 +827,7 @@ public class MyAgent implements Agent {
 
 //-------------------------------------------------------------------------------------------	
 
-	// calculating the probabilites of adjacent blocks are calculated and updated
-	// when the box contains breeze.
+	// calculando as probabilidades de blocos adjacentes serem calculados e atualizados // quando a caixa contém brisa.
 	public void breezeMethod(int[][] map, int cX, int cY, int x, int y) {
 
 		int count = 0, t1 = 0, d = 0, X = 0, Y = 0;
@@ -1078,8 +1071,8 @@ public class MyAgent implements Agent {
 
 //-------------------------------------------------------------------------------------------	
 
-	// all the probabilities of adjacent boxes are updated when the box contains
-	// stench
+//todas as probabilidades das caixas adjacentes são atualizadas quando a caixa contém
+// fedor
 	public void strenchMethod(int[][] map, int cX, int cY, int x, int y) {
 
 		int count = 0, Y = 0, X = 0, t1 = 0, d = 0, count1 = 0, d1 = 0;
@@ -1379,9 +1372,9 @@ public class MyAgent implements Agent {
 	}
 
 //-------------------------------------------------------------------------------------------	
-	/**
-	 * Asks your solver agent to execute an action.
-	 */
+/**
+* Pede ao seu agente solucionador para executar uma ação.
+*/
 
 	public void doAction() {
 
@@ -1389,8 +1382,8 @@ public class MyAgent implements Agent {
 		int cX = w.getPlayerX();
 		int cY = w.getPlayerY();
 
-		// transformed according to the map array
-		int transformX = 4 - cY;
+		//transformado de acordo com o array do mapa
+		int transformX = 15 - cY;
 		int transformY = cX - 1;
 
 		// -----------------------------------------------------------------
@@ -1752,7 +1745,7 @@ public class MyAgent implements Agent {
 	}
 
 	/**
-	 * Genertes a random instruction for the Agent.
+	 * Ggera instruções aleatorias para o agente
 	 */
 	public int decideRandomMove() {
 		return (int) (Math.random() * 4);

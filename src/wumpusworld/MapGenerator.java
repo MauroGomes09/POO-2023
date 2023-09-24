@@ -1,20 +1,17 @@
 package wumpusworld;
 
 import java.util.Random;
-
 /**
- * This class generates random Wumpus World maps.
- *
- * @author Johan Hagelbäck
- */
+  * Esta classe gera mapas Wumpus World aleatórios.
+  */
 public class MapGenerator 
 {
-    /**
-     * Generates a random Wumpus World map.
-     * 
-     * @param seed Seed for the randomizer. Same seed always results in the same random map.
-     * @return Generated Wumpus World
-     */
+  /**
+      * Gera um mapa mundial Wumpus aleatório.
+      *
+      * @param seed Semente para o randomizador. A mesma semente sempre resulta no mesmo mapa aleatório.
+      * @return Mundo Wumpus gerado
+      */
     public static WorldMap getRandomMap(int seed)
     {
         Random rnd = new Random(seed);
@@ -29,12 +26,12 @@ public class MapGenerator
         return w;
     }
     
-    /**
-     * Adds a pit to a random square.
-     * 
-     * @param w Wumpus World
-     * @param r Randomizer
-     */
+   /**
+      * Adiciona um buraco a um quadrado aleatório.
+      *
+      * @param w Wumpus Mundo
+      * @param r Randomizador
+      */
     private static void addRandomPit(WorldMap w, Random r)
     {
         boolean valid = false;
@@ -100,6 +97,6 @@ public class MapGenerator
      */
     private static int rnd(Random rnd)
     {
-        return rnd.nextInt(4) + 1;
+        return rnd.nextInt(15) + 1;
     }
 }

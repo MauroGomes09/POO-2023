@@ -1,15 +1,13 @@
 package wumpusworld;
 
 /**
- * Interface for creating a Wumpus World solver
- * agent.
+ * Interface para criar um agente para combater o wumpus
  * 
- * @author Johan Hagelbäck
  */
 public interface Agent 
 {
     /**
-     * Asks the agent to execute an action.
+     * Diz ao agente a ação que deve realizar no mundo
      */
     public void doAction();
 }

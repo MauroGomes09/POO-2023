@@ -4,11 +4,10 @@ import java.util.Vector;
 import java.awt.Point;
 
 /**
- * This class represents a Wumpus World map read
- * from the file.
- * 
- * @author Johan Hagelbäck
- */
+  * Esta classe representa uma leitura do mapa Wumpus World
+  *do arquivo.
+
+  */
 public class WorldMap
 {
     private int size;
@@ -16,97 +15,95 @@ public class WorldMap
     private Point gold;
     private Vector<Point> pits;
     
-    /**
-     * Creates a new map instance.
-     * 
-     * @param size Size of the world map
-     */
+   /**
+      * Cria uma nova instância de mapa.
+      *
+      * @param size Tamanho do mapa mundial
+      */
     public WorldMap(int size)
     {
         this.size = size;
         pits = new Vector<Point>();
     }
-    
-    /**
-     * Adds the Wumpus.
-     * 
-     * @param x X position
-     * @param y Y position
-     */
+   /**
+      * Adiciona o Wumpus.
+      *
+      * @param x posição X
+      * @param e posição Y
+      */
     public void addWumpus(int x, int y)
     {
         wumpus = new Point(x,y);
     }
     
-    /**
-     * Adds the gold treasure.
-     * 
-     * @param x X position
-     * @param y Y position
-     */
+ /**
+      * Adiciona o tesouro de ouro.
+      *
+      * @param x posição X
+      * @param e posição Y
+      */
     public void addGold(int x, int y)
     {
         gold = new Point(x,y);
     }
     
-    /**
-     * Adds a pit. The map can have any number of pits.
-     * 
-     * @param x X position
-     * @param y Y position
-     */
+   /**
+      * Adiciona um poço. O mapa pode ter qualquer número de poços.
+      *
+      * @param x posição X
+      * @param e posição Y
+      */
     public void addPit(int x, int y)
     {
         pits.add(new Point(x,y));
     }
     
-    /**
-     * Returns the size of the world map.
-     * 
-     * @return The size
-     */
+/**
+      * Retorna o tamanho do mapa mundial.
+      *
+      * @return O tamanho
+      */
     public int getSize()
     {
         return size;
     }
     
-    /**
-     * Returns position for the Wumpus.
-     * 
-     * @return The position 
-     */
+/**
+      * Retorna posição para o Wumpus.
+      *
+      * @return A posição
+      */
     public Point getWumpus()
     {
         return wumpus;
     }
     
-    /**
-     * Returns position for the gold treasure.
-     * 
-     * @return The position 
-     */
+   /**
+      * Retorna a posição do tesouro de ouro.
+      *
+      * @return A posição
+      */
     public Point getGold()
     {
         return gold;
     }
-    
-    /**
-     * Returns positions for all pits.
-     * 
-     * @return A list of positions for pits
-     */
+/**
+      * Retorna posições para todos os boxes.
+      *
+      * @return Uma lista de posições para boxes
+      */
     public Vector<Point> getPits()
     {
         return pits;
     }
     
     /**
-     * Checks if there is a pit in the specified location.
-     * 
-     * @param x X coordinate
-     * @param y Y coordinate
-     * @return True if there is a pit, false it not
-     */
+      * Verifica se existe um poço no local especificado.
+      *
+      * @param x coordenada X
+      * @param e coordenada Y
+      * @return True se houver um buraco, false se não
+      */
     public boolean hasPit(int x, int y)
     {
         for (Point p:pits)
@@ -119,11 +116,11 @@ public class WorldMap
         return false;
     }
     
-    /**
-     * Generates a Wumpus World instance from this map.
-     * 
-     * @return Wumpus World instance
-     */
+   /**
+      * Gera uma instância do Wumpus World a partir deste mapa.
+      *
+      * @return Instância do Wumpus World
+      */
     public World generateWorld()
     {
         World w = new World(size);
