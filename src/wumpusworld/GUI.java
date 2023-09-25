@@ -155,35 +155,35 @@ public class GUI implements ActionListener {
         bl.setActionCommand("TL");
         bl.addActionListener(this);
         buttons.add(bl);
-        //Mf
+        // Mf
         JButton bf = new JButton(new ImageIcon("gfx/MF.png"));
         bf.setActionCommand("MF");
         bf.addActionListener(this);
         buttons.add(bf);
-        //TR
+        // TR
         JButton br = new JButton(new ImageIcon("gfx/TR.png"));
         br.setActionCommand("TR");
         br.addActionListener(this);
         buttons.add(br);
-        //pegar
+        // pegar
         JButton bg = new JButton("Pegar");
         bg.setPreferredSize(new Dimension(95, 22));
         bg.setActionCommand("Pegar");
         bg.addActionListener(this);
         buttons.add(bg);
-        //Sair
+        // Sair
         JButton bc = new JButton("Sair");
         bc.setPreferredSize(new Dimension(95, 22));
         bc.setActionCommand("Sair");
         bc.addActionListener(this);
         buttons.add(bc);
-        //Atirar
+        // Atirar
         JButton bs = new JButton("Atirar");
         bs.setPreferredSize(new Dimension(95, 22));
         bs.setActionCommand("Atirar");
         bs.addActionListener(this);
         buttons.add(bs);
-        //lanterna
+        // lanterna
         JButton lanternButton = new JButton("Lanterna");
         lanternButton.setPreferredSize(new Dimension(95, 22));
         lanternButton.setActionCommand("Lanterna");
@@ -216,14 +216,14 @@ public class GUI implements ActionListener {
 
         updateGame();
 
-        // Show window
+        // Mostra a janela
         frame.setVisible(true);
     }
 
     /**
-     * Button commands.
+     * Comandos dos botões
      * 
-     * @param e Button event.
+     * @param e Evento executado pelo botão
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("TL")) {
@@ -254,7 +254,7 @@ public class GUI implements ActionListener {
             w.doAction(World.A_SHOOT1);
             updateGame();
         }
-          if (e.getActionCommand().equals("Lanterna")) {
+        if (e.getActionCommand().equals("Lanterna")) {
             w.doAction(World.A_LANTERN);
             updateGame();
         }
@@ -280,7 +280,7 @@ public class GUI implements ActionListener {
     }
 
     /**
-* Atualiza a GUI do jogo para um novo estado mundial.
+     * Atualiza a GUI do jogo para um novo estado mundial.
      */
     private void updateGame() {
         for (int i = 0; i < 15; i++) {

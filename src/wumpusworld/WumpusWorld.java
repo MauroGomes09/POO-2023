@@ -4,10 +4,8 @@ import java.util.Vector;
 
 /**
  * O programa
- * tem três opções: 1) Executar uma GUI onde o Wumpus World possa ser
- * resolvido passo a passo manualmente ou por um agente, ou 2) executar
- * uma simulação com mundos aleatórios em vários jogos,
- * ou 3) executar uma simulação sobre os mundos lidos em um arquivo de mapa.
+ * tem apenas uma opção: 1) Executar uma GUI onde o Wumpus World possa ser
+ * resolvido passo a passo manualmente ou por um agente.
  * 
  */
 public class WumpusWorld {
@@ -26,15 +24,8 @@ public class WumpusWorld {
     public WumpusWorld() {
         String option = Config.getOption();
 
-        if (option.equalsIgnoreCase("gui")) {
-            showGUI();
-        }
-        if (option.equalsIgnoreCase("sim")) {
-            runSimulator();
-        }
-        if (option.equalsIgnoreCase("simdb")) {
-            runSimulatorDB();
-        }
+        option.equalsIgnoreCase("gui");
+        showGUI();
     }
 
     /**
@@ -42,37 +33,6 @@ public class WumpusWorld {
      */
     private void showGUI() {
         GUI g = new GUI();
-    }
-
-    /**
-     * Inicia o programa em modo simulador com
-     * mapas lidos de um arquivo de dados.
-     */
-    private void runSimulatorDB() {
-        MapReader mr = new MapReader();
-        Vector<WorldMap> maps = mr.readMaps();
-
-        double totScore = 0;
-        for (int i = 0; i < maps.size(); i++) {
-            World w = maps.get(i).generateWorld();
-            totScore += (double) runSimulation(w);
-        }
-        totScore = totScore / (double) maps.size();
-        System.out.println("Average score: " + totScore);
-    }
-
-    /**
-     * Inicia o programa em modo simulador
-     * com mapas aleatórios.
-     */
-    private void runSimulator() {
-        double totScore = 0;
-        for (int i = 0; i < 15; i++) {
-            WorldMap w = MapGenerator.getRandomMap(i);
-            totScore += (double) runSimulation(w.generateWorld());
-        }
-        totScore = totScore / (double) 10;
-        System.out.println("Average score: " + totScore);
     }
 
     /**
