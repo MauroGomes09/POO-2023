@@ -1,102 +1,91 @@
 package wumpusworld;
 
 import java.util.Vector;
+
 /**
-  O programa
-  * tem três opções: 1) Executar uma GUI onde o Wumpus World possa ser
-  * resolvido passo a passo manualmente ou por um agente, ou 2) executar
-  * uma simulação com mundos aleatórios em vários jogos,
-  * ou 3) executar uma simulação sobre os mundos lidos em um arquivo de mapa.
- 
-  */
+ * O programa
+ * tem três opções: 1) Executar uma GUI onde o Wumpus World possa ser
+ * resolvido passo a passo manualmente ou por um agente, ou 2) executar
+ * uma simulação com mundos aleatórios em vários jogos,
+ * ou 3) executar uma simulação sobre os mundos lidos em um arquivo de mapa.
+ * 
+ */
 public class WumpusWorld {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         WumpusWorld ww = new WumpusWorld();
     }
-    
+
     /**
-     * inicioa o programa 
+     * inicia o programa
      * 
      */
-    public WumpusWorld()
-    {
+    public WumpusWorld() {
         String option = Config.getOption();
-        
-        if (option.equalsIgnoreCase("gui"))
-        {
+
+        if (option.equalsIgnoreCase("gui")) {
             showGUI();
         }
-        if (option.equalsIgnoreCase("sim"))
-        {
+        if (option.equalsIgnoreCase("sim")) {
             runSimulator();
         }
-        if (option.equalsIgnoreCase("simdb"))
-        {
+        if (option.equalsIgnoreCase("simdb")) {
             runSimulatorDB();
         }
     }
-    
+
     /**
      * inicia o programa no modo gui
      */
-    private void showGUI()
-    {
+    private void showGUI() {
         GUI g = new GUI();
     }
-    
+
     /**
-      * Inicia o programa em modo simulador com
-      * mapas lidos de um arquivo de dados.
-      */
-    private void runSimulatorDB()
-    {
+     * Inicia o programa em modo simulador com
+     * mapas lidos de um arquivo de dados.
+     */
+    private void runSimulatorDB() {
         MapReader mr = new MapReader();
         Vector<WorldMap> maps = mr.readMaps();
-        
+
         double totScore = 0;
-        for (int i = 0; i < maps.size(); i++)
-        {
+        for (int i = 0; i < maps.size(); i++) {
             World w = maps.get(i).generateWorld();
-            totScore += (double)runSimulation(w);
+            totScore += (double) runSimulation(w);
         }
-        totScore = totScore / (double)maps.size();
+        totScore = totScore / (double) maps.size();
         System.out.println("Average score: " + totScore);
     }
-    
-   /**
-      * Inicia o programa em modo simulador
-      * com mapas aleatórios.
-      */
-    private void runSimulator()
-    {
+
+    /**
+     * Inicia o programa em modo simulador
+     * com mapas aleatórios.
+     */
+    private void runSimulator() {
         double totScore = 0;
-        for (int i = 0; i < 15; i++)
-        {
+        for (int i = 0; i < 15; i++) {
             WorldMap w = MapGenerator.getRandomMap(i);
-            totScore += (double)runSimulation(w.generateWorld());
+            totScore += (double) runSimulation(w.generateWorld());
         }
-        totScore = totScore / (double)10;
+        totScore = totScore / (double) 10;
         System.out.println("Average score: " + totScore);
     }
-    
-  /**
-      * Executa o agente solucionador para o Wumpus especificado
-      * Mundo.
-      *
-      * @param w Wumpus Mundo
-      * @return Pontuação alcançada
-      */
-    private int runSimulation(World w)
-    {
+
+    /**
+     * Executa o agente solucionador para o Wumpus especificado
+     * Mundo.
+     *
+     * @param w Wumpus Mundo
+     * @return Pontuação alcançada
+     */
+    private int runSimulation(World w) {
         int actions = 0;
         Agent a = new MyAgent(w);
-        while (!w.gameOver())
-        {
+        while (!w.gameOver()) {
             a.doAction();
             actions++;
         }

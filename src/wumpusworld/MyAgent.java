@@ -1,9 +1,9 @@
 package wumpusworld;
 
 /**
-  * Contém código inicial para criar seu próprio agente Wumpus World. Atualmente
-  * o agente só toma uma decisão aleatória a cada turno.
-  */
+ * Contém código inicial para criar seu próprio agente Wumpus World. Atualmente
+ * o agente só toma uma decisão aleatória a cada turno.
+ */
 public class MyAgent implements Agent {
 
 	private World w;
@@ -15,19 +15,20 @@ public class MyAgent implements Agent {
 	int pbb = 0;
 	int pd = 0;
 	int path1 = 0;
-/**
-* Cria uma nova instância do seu agente solucionador.
-*
-* @param world Estado atual do mundo
-*/
+
+	/**
+	 * Cria uma nova instância do seu agente solucionador.
+	 *
+	 * @param world Estado atual do mundo
+	 */
 	public MyAgent(World world) {
 		w = world;
 	}
 
-//-----------------------------------------------------------------
-//Método direto que recebe inteiro como entrada
-// [valores possíveis: 1-Direita,2-Esquerda,3-Cima,4-baixo]
-// 12+4 possibilidades
+	// -----------------------------------------------------------------
+	// Método direto que recebe inteiro como entrada
+	// [valores possíveis: 1-Direita,2-Esquerda,3-Cima,4-baixo]
+	// 12+4 possibilidades
 	public void direction(int x) {
 		int i = 0, dif;
 
@@ -70,11 +71,11 @@ public class MyAgent implements Agent {
 
 	}
 
-// -----------------------------------------------------------------
+	// -----------------------------------------------------------------
 
-// Método de atirar flecha que toma direção conforme a entrada atira no wumpus
-// [valores possíveis: 1-Direita,2-Esquerda,3-Cima,4-baixo]
-// 12+4 possibilidades
+	// Método de atirar flecha que toma direção conforme a entrada atira no wumpus
+	// [valores possíveis: 1-Direita,2-Esquerda,3-Cima,4-baixo]
+	// 12+4 possibilidades
 	public void arrow(int x) {
 		int i = 0, dif;
 
@@ -101,26 +102,28 @@ public class MyAgent implements Agent {
 			w.doAction(World.A_TURN_RIGHT);
 			w.doAction(World.A_TURN_RIGHT);
 			w.doAction(World.A_SHOOT);
-
+			w.doAction(World.A_SHOOT1);
 		}
 
 		if ((i == 4 && x == 2) || (i == 2 && x == 3) || (i == 3 && x == 1) || (i == 1 && x == 4)) {
 			w.doAction(World.A_TURN_RIGHT);
 			w.doAction(World.A_SHOOT);
+			w.doAction(World.A_SHOOT1);
 		}
 
 		if ((x == 4 && i == 2) || (x == 2 && i == 3) || (x == 3 && i == 1) || (x == 1 && i == 4)) {
 			w.doAction(World.A_TURN_LEFT);
 			w.doAction(World.A_SHOOT);
+			w.doAction(World.A_SHOOT1);
 		}
 
 	}
 
-//-------------------------------------------------------------------------------------------	
-// fornecerá um caminho mais curto entre o nó atual e o nó de destino
-// este método é usado quando o jogo fica com muito menos nós não visitados.
-// e também é um caminho seguro
-// ele cairá no poço se não existir nenhum caminho
+	// -------------------------------------------------------------------------------------------
+	// fornecerá um caminho mais curto entre o nó atual e o nó de destino
+	// este método é usado quando o jogo fica com muito menos nós não visitados.
+	// e também é um caminho seguro
+	// ele cairá no poço se não existir nenhum caminho
 	public void pathDestination(int[][] map, int[] a, int x, int y, int c1, int move, int score, int fx, int fd) {
 
 		int k;
@@ -222,10 +225,11 @@ public class MyAgent implements Agent {
 		}
 	}
 
-//-------------------------------------------------------------------------------------------	
+	// -------------------------------------------------------------------------------------------
 
-// se todos os nós não visitados cercados contiverem brisas, isso dará o valor ideal
-//caminho com menor probabilidade
+	// se todos os nós não visitados cercados contiverem brisas, isso dará o valor
+	// ideal
+	// caminho com menor probabilidade
 
 	public void pathbreeze(int[][] map, int[] a, int x, int y, int c1, int move) {
 		int l = 0;
@@ -252,18 +256,18 @@ public class MyAgent implements Agent {
 					path = 1;
 				}
 				switch (b[0]) {
-				case 1:
-					direction(1);
-					break;
-				case 2: // left
-					direction(2);
-					break;
-				case 3: // up
-					direction(3);
-					break;
-				case 4: // down
-					direction(4);
-					break;
+					case 1:
+						direction(1);
+						break;
+					case 2: // left
+						direction(2);
+						break;
+					case 3: // up
+						direction(3);
+						break;
+					case 4: // down
+						direction(4);
+						break;
 				}
 
 			}
@@ -280,18 +284,18 @@ public class MyAgent implements Agent {
 				}
 
 				switch (a[0]) {
-				case 1:
-					direction(1);
-					break;
-				case 2: // left
-					direction(2);
-					break;
-				case 3: // up
-					direction(3);
-					break;
-				case 4: // down
-					direction(4);
-					break;
+					case 1:
+						direction(1);
+						break;
+					case 2: // left
+						direction(2);
+						break;
+					case 3: // up
+						direction(3);
+						break;
+					case 4: // down
+						direction(4);
+						break;
 				}
 
 			}
@@ -376,9 +380,9 @@ public class MyAgent implements Agent {
 
 	}
 
-//-------------------------------------------------------------------------------------------	
+	// -------------------------------------------------------------------------------------------
 
-// encontrará o melhor caminho para o nó seguro não visitado.
+	// encontrará o melhor caminho para o nó seguro não visitado.
 	public void path(int[][] map, int[] a, int x, int y, int c1, int move) {
 
 		if (x <= 3 && y <= 3 && x >= 0 && y >= 0)
@@ -394,18 +398,18 @@ public class MyAgent implements Agent {
 				}
 
 				switch (a[0]) {
-				case 1:
-					direction(1);
-					break;
-				case 2: // left
-					direction(2);
-					break;
-				case 3: // up
-					direction(3);
-					break;
-				case 4: // down
-					direction(4);
-					break;
+					case 1:
+						direction(1);
+						break;
+					case 2: // left
+						direction(2);
+						break;
+					case 3: // up
+						direction(3);
+						break;
+					case 4: // down
+						direction(4);
+						break;
 				}
 				return;
 			}
@@ -493,10 +497,10 @@ public class MyAgent implements Agent {
 
 	}
 
-//-------------------------------------------------------------------------------------------	
-// se a caixa contiver tanto a brisa quanto o fedor o metid será executado
-// verá as probabilidades dos blocos adjacentes e se moverá de acordo
-// e atualize as probabilidades para as caixas adjacentes.
+	// -------------------------------------------------------------------------------------------
+	// se a caixa contiver tanto a brisa quanto o fedor o método será executado
+	// verá as probabilidades dos blocos adjacentes e se moverá de acordo
+	// e atualize as probabilidades para as caixas adjacentes.
 	public void breezeAndStrenchMethod(int[][] map, int cX, int cY, int x, int y) {
 		int count = 0, Y = 0, X = 0, t1 = 0, d = 0, count1 = 0, d1 = 0;
 
@@ -750,18 +754,18 @@ public class MyAgent implements Agent {
 		if (t1 == 1)
 			switch (d) {
 
-			case 1:
-				direction(1);
-				break;
-			case 2:
-				direction(2);
-				break;
-			case 3:
-				direction(3);
-				break;
-			case 4:
-				direction(4);
-				break;
+				case 1:
+					direction(1);
+					break;
+				case 2:
+					direction(2);
+					break;
+				case 3:
+					direction(3);
+					break;
+				case 4:
+					direction(4);
+					break;
 			}
 
 		if (t1 != 1) {
@@ -782,36 +786,36 @@ public class MyAgent implements Agent {
 							pathDestination(map, a, x, y, -1, 0, 0, i, j);
 
 							switch (b[0]) {
-							case 1:
-								direction(1);
-								break;
-							case 2: // left
-								direction(2);
-								break;
-							case 3: // up
-								direction(3);
-								break;
-							case 4: // down
-								direction(4);
-								break;
-							case 5: // shoot
+								case 1:
+									direction(1);
+									break;
+								case 2: // left
+									direction(2);
+									break;
+								case 3: // up
+									direction(3);
+									break;
+								case 4: // down
+									direction(4);
+									break;
+								case 5: // shoot
 
-								w.doAction(World.A_SHOOT);
-								break;
-							case 6:
+									w.doAction(World.A_SHOOT);
+									break;
+								case 6:
 
-								w.doAction(World.A_SHOOT);
-								break;
-							case 7:
+									w.doAction(World.A_SHOOT);
+									break;
+								case 7:
 
-								w.doAction(World.A_SHOOT);
-								break;
-							case 8:
+									w.doAction(World.A_SHOOT);
+									break;
+								case 8:
 
-								w.doAction(World.A_SHOOT);
-								break;
-							default: // random
-								break;
+									w.doAction(World.A_SHOOT);
+									break;
+								default: // random
+									break;
 							}
 
 						}
@@ -825,9 +829,10 @@ public class MyAgent implements Agent {
 		}
 	}
 
-//-------------------------------------------------------------------------------------------	
+	// -------------------------------------------------------------------------------------------
 
-	// calculando as probabilidades de blocos adjacentes serem calculados e atualizados // quando a caixa contém brisa.
+	// calculando as probabilidades de blocos adjacentes serem calculados e
+	// atualizados // quando a caixa contém brisa.
 	public void breezeMethod(int[][] map, int cX, int cY, int x, int y) {
 
 		int count = 0, t1 = 0, d = 0, X = 0, Y = 0;
@@ -1011,18 +1016,18 @@ public class MyAgent implements Agent {
 
 		switch (d) {
 
-		case 1:
-			direction(1);
-			break;
-		case 2:
-			direction(2);
-			break;
-		case 3:
-			direction(3);
-			break;
-		case 4:
-			direction(4);
-			break;
+			case 1:
+				direction(1);
+				break;
+			case 2:
+				direction(2);
+				break;
+			case 3:
+				direction(3);
+				break;
+			case 4:
+				direction(4);
+				break;
 		}
 
 		if (t1 != 1) {
@@ -1042,18 +1047,18 @@ public class MyAgent implements Agent {
 							minscore = 100;
 							pathDestination(map, a, x, y, -1, 0, 0, i, j);
 							switch (a[0]) {
-							case 1: // right
-								direction(1);
-								break;
-							case 2: // left
-								direction(2);
-								break;
-							case 3: // up
-								direction(3);
-								break;
-							case 4: // down
-								direction(4);
-								break;
+								case 1: // right
+									direction(1);
+									break;
+								case 2: // left
+									direction(2);
+									break;
+								case 3: // up
+									direction(3);
+									break;
+								case 4: // down
+									direction(4);
+									break;
 							}
 
 							break;
@@ -1069,10 +1074,11 @@ public class MyAgent implements Agent {
 
 	}
 
-//-------------------------------------------------------------------------------------------	
+	// -------------------------------------------------------------------------------------------
 
-//todas as probabilidades das caixas adjacentes são atualizadas quando a caixa contém
-// fedor
+	// todas as probabilidades das caixas adjacentes são atualizadas quando a caixa
+	// contém
+	// fedor
 	public void strenchMethod(int[][] map, int cX, int cY, int x, int y) {
 
 		int count = 0, Y = 0, X = 0, t1 = 0, d = 0, count1 = 0, d1 = 0;
@@ -1312,18 +1318,18 @@ public class MyAgent implements Agent {
 
 			switch (d) {
 
-			case 1:
-				direction(1);
-				break;
-			case 2:
-				direction(2);
-				break;
-			case 3:
-				direction(3);
-				break;
-			case 4:
-				direction(4);
-				break;
+				case 1:
+					direction(1);
+					break;
+				case 2:
+					direction(2);
+					break;
+				case 3:
+					direction(3);
+					break;
+				case 4:
+					direction(4);
+					break;
 			}
 
 			if (t1 != 1) {
@@ -1343,18 +1349,18 @@ public class MyAgent implements Agent {
 								pathDestination(map, a, x, y, -1, 0, 0, i, j);
 
 								switch (b[0]) {
-								case 1: // right
-									direction(1);
-									break;
-								case 2: // left
-									direction(2);
-									break;
-								case 3: // up
-									direction(3);
-									break;
-								case 4: // down
-									direction(4);
-									break;
+									case 1: // right
+										direction(1);
+										break;
+									case 2: // left
+										direction(2);
+										break;
+									case 3: // up
+										direction(3);
+										break;
+									case 4: // down
+										direction(4);
+										break;
 								}
 
 								break;
@@ -1371,18 +1377,18 @@ public class MyAgent implements Agent {
 
 	}
 
-//-------------------------------------------------------------------------------------------	
-/**
-* Pede ao seu agente solucionador para executar uma ação.
-*/
+	// -------------------------------------------------------------------------------------------
+	/**
+	 * Pede ao seu agente solucionador para executar uma ação.
+	 */
 
 	public void doAction() {
 
-		// Location of the player
+		// Localização do jogador
 		int cX = w.getPlayerX();
 		int cY = w.getPlayerY();
 
-		//transformado de acordo com o array do mapa
+		// transformado de acordo com o array do mapa
 		int transformX = 15 - cY;
 		int transformY = cX - 1;
 
@@ -1510,36 +1516,36 @@ public class MyAgent implements Agent {
 									pathDestination(map, a, transformX, transformY, -1, 0, 0, i, j);
 
 									switch (b[0]) {
-									case 1:
-										direction(1);
-										break;
-									case 2: // left
-										direction(2);
-										break;
-									case 3: // up
-										direction(3);
-										break;
-									case 4: // down
-										direction(4);
-										break;
-									case 5: // shoot
+										case 1:
+											direction(1);
+											break;
+										case 2: // left
+											direction(2);
+											break;
+										case 3: // up
+											direction(3);
+											break;
+										case 4: // down
+											direction(4);
+											break;
+										case 5: // shoot
 
-										w.doAction(World.A_SHOOT);
-										break;
-									case 6:
+											w.doAction(World.A_SHOOT);
+											break;
+										case 6:
 
-										w.doAction(World.A_SHOOT);
-										break;
-									case 7:
+											w.doAction(World.A_SHOOT);
+											break;
+										case 7:
 
-										w.doAction(World.A_SHOOT);
-										break;
-									case 8:
+											w.doAction(World.A_SHOOT);
+											break;
+										case 8:
 
-										w.doAction(World.A_SHOOT);
-										break;
-									default: // random
-										break;
+											w.doAction(World.A_SHOOT);
+											break;
+										default: // random
+											break;
 									}
 
 								}
@@ -1715,18 +1721,18 @@ public class MyAgent implements Agent {
 									pathDestination(map, a, transformX, transformY, -1, 0, 0, i, j);
 
 									switch (b[0]) {
-									case 1:
-										direction(1);
-										break;
-									case 2: // left
-										direction(2);
-										break;
-									case 3: // up
-										direction(3);
-										break;
-									case 4: // down
-										direction(4);
-										break;
+										case 1:
+											direction(1);
+											break;
+										case 2: // left
+											direction(2);
+											break;
+										case 3: // up
+											direction(3);
+											break;
+										case 4: // down
+											direction(4);
+											break;
 									}
 
 								}
