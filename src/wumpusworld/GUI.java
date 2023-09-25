@@ -9,6 +9,7 @@ import java.util.Vector;
 
 public class GUI implements ActionListener
 {
+    
     private JFrame frame;
     private JPanel gamepanel;
     private JLabel score;
@@ -309,7 +310,8 @@ public class GUI implements ActionListener
                 }
                 if (w.isUnknown(i+1, j+1))
                 {
-                    blocks[i][j].setBackground(Color.cyan);
+                    blocks[i][j].setBackground(Color.decode("#664323"));
+
                 }
                 
                 blocks[i][j].updateUI();

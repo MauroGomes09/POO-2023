@@ -44,6 +44,10 @@ public class World
     public static final String A_SHOOT = "s";
     public static final String A_TURN_LEFT = "l";
     public static final String A_TURN_RIGHT = "r";
+
+    public boolean hasPlayerVisited(int x, int y) {
+        return grid[x][y].isVisited();
+    }
     
   /**
       * Cria um novo Mundo Wumpus. O Mundo Wumpus trabalha com
