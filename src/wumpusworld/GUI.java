@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.File;
 import java.util.Vector;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
 
@@ -153,29 +155,41 @@ public class GUI implements ActionListener {
         bl.setActionCommand("TL");
         bl.addActionListener(this);
         buttons.add(bl);
+        //Mf
         JButton bf = new JButton(new ImageIcon("gfx/MF.png"));
         bf.setActionCommand("MF");
         bf.addActionListener(this);
         buttons.add(bf);
+        //TR
         JButton br = new JButton(new ImageIcon("gfx/TR.png"));
         br.setActionCommand("TR");
         br.addActionListener(this);
         buttons.add(br);
+        //pegar
         JButton bg = new JButton("Pegar");
         bg.setPreferredSize(new Dimension(95, 22));
         bg.setActionCommand("Pegar");
         bg.addActionListener(this);
         buttons.add(bg);
+        //Sair
         JButton bc = new JButton("Sair");
         bc.setPreferredSize(new Dimension(95, 22));
         bc.setActionCommand("Sair");
         bc.addActionListener(this);
         buttons.add(bc);
+        //Atirar
         JButton bs = new JButton("Atirar");
         bs.setPreferredSize(new Dimension(95, 22));
         bs.setActionCommand("Atirar");
         bs.addActionListener(this);
         buttons.add(bs);
+        //lanterna
+        JButton lanternButton = new JButton("Lanterna");
+        lanternButton.setPreferredSize(new Dimension(95, 22));
+        lanternButton.setActionCommand("Lanterna");
+        lanternButton.addActionListener(this);
+        buttons.add(lanternButton);
+        // Add a resolução
         JButton ba = new JButton("Executar Resolução");
         ba.setActionCommand("AGENT");
         ba.addActionListener(this);
@@ -240,6 +254,10 @@ public class GUI implements ActionListener {
             w.doAction(World.A_SHOOT1);
             updateGame();
         }
+          if (e.getActionCommand().equals("Lanterna")) {
+            w.doAction(World.A_LANTERN);
+            updateGame();
+        }
         if (e.getActionCommand().equals("NEW")) {
             String s = (String) mapList.getSelectedItem();
             if (s.equalsIgnoreCase("Random")) {
@@ -262,7 +280,7 @@ public class GUI implements ActionListener {
     }
 
     /**
-     * Updates the game GUI to a new world state.
+* Atualiza a GUI do jogo para um novo estado mundial.
      */
     private void updateGame() {
         for (int i = 0; i < 15; i++) {
@@ -310,7 +328,7 @@ public class GUI implements ActionListener {
         score.setText("Score: " + w.getScore());
         status.setText("");
         if (w.isInPit()) {
-            status.setText("Player must climb up!");
+            status.setText("O jogador deve subir!");
         }
         if (w.gameOver()) {
             status.setText("GAME OVER");

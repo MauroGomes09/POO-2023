@@ -8,6 +8,7 @@ import java.util.Vector;
  * foi executado.
  */
 public class World {
+    private boolean lantern;
     private int size;
     private String[][] w;
     private int pX = 1;
@@ -46,10 +47,22 @@ public class World {
     public static final String A_SHOOT1 = "s1";
     public static final String A_TURN_LEFT = "l";
     public static final String A_TURN_RIGHT = "r";
+    public static final String A_LANTERN = "lt";
 
-    public boolean hasPlayerVisited(int x, int y) {
-        return grid[x][y].isVisited();
-    }
+   
+/*Lanterna */
+
+private boolean lanternOn = false;
+
+
+public void toggleLantern(){
+    lanternOn = !lanternOn;
+}
+
+
+
+
+
 
     /**
      * Cria um novo Mundo Wumpus. O Mundo Wumpus trabalha com
@@ -476,6 +489,7 @@ public class World {
             w[x][y] = w[x][y].replaceAll(UNKNOWN, "");
         }
     }
+    
 
     /**
      * Executa uma ação no Mundo Wumpus.
@@ -543,6 +557,11 @@ public class World {
             isInPit = false;
         }
 
+        if (a.equals(A_LANTERN)) {
+            toggleLantern();
+            return true;
+        }
+
         // Action failed
         return false;
     }
@@ -603,7 +622,26 @@ public class World {
     private boolean move(int nX, int nY) {
         // Check if valid
         if (!isValidPosition(nX, nY)) {
-            return false;
+            return false ;
+        }
+        if (lanternOn) {
+            // Ilumina as praças ao longo da linha ou coluna
+            if (dir == DIR_RIGHT || dir == DIR_LEFT) {
+                for (int x = Math.min(pX, nX); x <= Math.max(pX, nX); x++) {
+                    for (int y = 1; y <= size; y++) {
+                        setVisited(x, y);
+                    }
+                }
+            } else if (dir == DIR_UP || dir == DIR_DOWN) {
+                for (int y = Math.min(pY, nY); y <= Math.max(pY, nY); y++) {
+                    for (int x = 1; x <= size; x++) {
+                        setVisited(x, y);
+                    }
+                }
+            }
+        } else {
+            // Atualiza a praça atual como visitada
+            setVisited(nX, nY);
         }
 
         pX = nX;

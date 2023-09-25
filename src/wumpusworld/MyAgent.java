@@ -80,19 +80,19 @@ public class MyAgent implements Agent {
 		int i = 0, dif;
 
 		if (w.getDirection() == World.DIR_RIGHT) {
-			System.out.println("I am facing Right");
+			System.out.println("Estou enfrentando a direita ");
 			i = 1;
 		}
 		if (w.getDirection() == World.DIR_LEFT) {
-			System.out.println("I am facing Left");
+			System.out.println("Estou enfrentando a esquerda");
 			i = 2;
 		}
 		if (w.getDirection() == World.DIR_UP) {
-			System.out.println("I am facing Up");
+			System.out.println("Estou enfrentando a cima");
 			i = 3;
 		}
 		if (w.getDirection() == World.DIR_DOWN) {
-			System.out.println("I am facing Down");
+			System.out.println("Estou enfrentando a baixo");
 			i = 4;
 		}
 		dif = i - x;
