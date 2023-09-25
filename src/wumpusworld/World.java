@@ -53,6 +53,8 @@ public class World {
 /*Lanterna */
 
 private boolean lanternOn = false;
+private int lanternUsageCounter = 0; // Contador de uso da lanterna
+private static final int LANTERN_LIMIT = 2; // Limite de uso da lanterna
 
 
 public void toggleLantern(){
@@ -557,11 +559,11 @@ public void toggleLantern(){
             isInPit = false;
         }
 
-        if (a.equals(A_LANTERN)) {
+        if (a.equals(A_LANTERN) && lanternUsageCounter < LANTERN_LIMIT) {
             toggleLantern();
+            lanternUsageCounter++;
             return true;
         }
-
         // Action failed
         return false;
     }
@@ -624,7 +626,7 @@ public void toggleLantern(){
         if (!isValidPosition(nX, nY)) {
             return false ;
         }
-        if (lanternOn) {
+        if (lanternOn && lanternUsageCounter < LANTERN_LIMIT) {
             // Ilumina as praças ao longo da linha ou coluna
             if (dir == DIR_RIGHT || dir == DIR_LEFT) {
                 for (int x = Math.min(pX, nX); x <= Math.max(pX, nX); x++) {
@@ -643,7 +645,7 @@ public void toggleLantern(){
             // Atualiza a praça atual como visitada
             setVisited(nX, nY);
         }
-
+      
         pX = nX;
         pY = nY;
 
