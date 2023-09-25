@@ -13,6 +13,8 @@ public class World {
     private String[][] w;
     private int pX = 1;
     private int pY = 1;
+    private int newX;
+    private int newY;
     private boolean wumpusAlive = true;
     private boolean monster2Alive = true;
     private boolean hasArrow = true;
@@ -49,27 +51,19 @@ public class World {
     public static final String A_TURN_RIGHT = "r";
     public static final String A_LANTERN = "lt";
 
-   
-/*Lanterna */
+    /* Lanterna */
 
-private boolean lanternOn = false;
-private int lanternUsageCounter = 0; // Contador de uso da lanterna
-private static final int LANTERN_LIMIT = 2; // Limite de uso da lanterna
+    private boolean lanternOn = false;
 
-
-public void toggleLantern(){
-    lanternOn = !lanternOn;
-}
-
-
-
-
-
+    public void toggleLantern() {
+        lanternOn = !lanternOn;
+    }
 
     /**
+     * 
      * Cria um novo Mundo Wumpus. O Mundo Wumpus trabalha com
-     * qualquer tamanho 4 ou maior, mas apenas o tamanho 4 é suportado por
-     * a GUI.
+     * tamanho de mapa(matriz) 4 ou maior, dependendo da opção escolhida pelo
+     * usúario.
      *
      * @param size Tamanho do mundo.
      */
@@ -131,9 +125,9 @@ public void toggleLantern(){
     }
 
     /**
-     * Returns player Y position.
+     * Retorna a posição do jogador Y.
      * 
-     * @return Y position.
+     * @return posição Y.
      */
     public int getPlayerY() {
         return pY;
@@ -407,7 +401,7 @@ public void toggleLantern(){
      * Adiciona o Wumpus a um quadrado.
      *
      * @param x posição X
-     * @param e posição Y
+     * @param y posição Y
      */
     public void addWumpus(int x, int y) {
         if (!w[x][y].contains(WUMPUS)) {
@@ -423,7 +417,7 @@ public void toggleLantern(){
      * Adiciona o Monstro 2 a um quadrado.
      *
      * @param x posição X
-     * @param e posição Y
+     * @param y posição Y
      */
 
     public void addMonstro2(int x, int y) {
@@ -491,7 +485,6 @@ public void toggleLantern(){
             w[x][y] = w[x][y].replaceAll(UNKNOWN, "");
         }
     }
-    
 
     /**
      * Executa uma ação no Mundo Wumpus.
@@ -559,11 +552,11 @@ public void toggleLantern(){
             isInPit = false;
         }
 
-        if (a.equals(A_LANTERN) && lanternUsageCounter < LANTERN_LIMIT) {
+        if (a.equals(A_LANTERN)) {
             toggleLantern();
-            lanternUsageCounter++;
             return true;
         }
+
         // Action failed
         return false;
     }
@@ -624,9 +617,9 @@ public void toggleLantern(){
     private boolean move(int nX, int nY) {
         // Check if valid
         if (!isValidPosition(nX, nY)) {
-            return false ;
+            return false;
         }
-        if (lanternOn && lanternUsageCounter < LANTERN_LIMIT) {
+        if (lanternOn) {
             // Ilumina as praças ao longo da linha ou coluna
             if (dir == DIR_RIGHT || dir == DIR_LEFT) {
                 for (int x = Math.min(pX, nX); x <= Math.max(pX, nX); x++) {
@@ -645,7 +638,7 @@ public void toggleLantern(){
             // Atualiza a praça atual como visitada
             setVisited(nX, nY);
         }
-      
+
         pX = nX;
         pY = nY;
 
@@ -711,4 +704,53 @@ public void toggleLantern(){
 
         monster2Alive = false;
     }
+
+    /**
+     * Move o Wumpus de acordo com as regras.
+     */
+    public void moveWumpus() {
+        if (wumpusAlive) {
+            do {
+                newX = pX + (int) (Math.random() * 3) - 1;
+                newY = pY + (int) (Math.random() * 3) - 1;
+            } while (!isValidPosition(newX, newY) || hasPit(newX, newY)); // Verifica se há um poço na nova posição
+
+            // Remove o Wumpus da posição atual
+            w[pX][pY] = w[pX][pY].replace(WUMPUS, "");
+            // Move o Wumpus para a nova posição
+            addWumpus(newX, newY);
+        }
+    }
+
+    /*
+     * /**
+     * Move o Monstro2.
+     */
+    public void moveMonstro2() {
+        if (monster2Alive) {
+            do {
+                int moveX = (int) (Math.random() * 3) - 1;
+                int moveY = (int) (Math.random() * 3) - 1;
+
+                // Verifica se o movimento é válido para formar um "L"
+                if ((moveX != 0 && moveY != 0) || (moveX == 0 && moveY == 0))
+                    continue;
+
+                newX = pX + moveX;
+                newY = pY + moveY;
+            } while (!isValidPosition(newX, newY) || hasPit(newX, newY) || hasWumpus(newX, newY)
+                    || hasPlayer(newX, newY)); // Verifica se há um poço, Wumpus ou jogador na nova posição
+
+            // Remove o Monstro2 da posição atual
+            w[pX][pY] = w[pX][pY].replace(MONSTRO2, "");
+            // Move o Monstro2 para a nova posição
+            addMonstro2(newX, newY);
+
+            // Atualiza as variáveis pX e pY para a nova posição do Monstro2
+            pX = newX;
+            pY = newY;
+
+        }
+    }
+
 }

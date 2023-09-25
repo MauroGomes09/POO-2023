@@ -5,7 +5,7 @@ import java.awt.Point;
 
 /**
  * Esta classe representa uma leitura do mapa Wumpus World
- * do arquivo.
+ * do arquivo(maps).
  * 
  */
 public class WorldMap {

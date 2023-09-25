@@ -1,4 +1,4 @@
-#comment
+#MAPAS
 NEW 4
 W 2 2
 M 3 4
