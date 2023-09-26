@@ -725,7 +725,7 @@ public class MyAgent implements Agent {
 					if ((x + 1) <= 3) {
 						if ((!w.isVisited(cX - 1, cY - 1) && map[x + 1][y - 1] == 1)
 								|| (map[x][y - 1] == 1 && !w.isVisited(cX - 1, cY))) {
-							// move left
+							
 							t1 = 1;
 							d = 2;
 						}
@@ -734,7 +734,7 @@ public class MyAgent implements Agent {
 					if ((x - 1) >= 0)
 						if ((!w.isVisited(cX - 1, cY + 1) && map[x - 1][y - 1] == 1)
 								|| (map[x][y - 1] == 1 && !w.isVisited(cX - 1, cY))) {
-							// move left
+							
 							t1 = 1;
 							d = 2;
 						}
@@ -742,7 +742,7 @@ public class MyAgent implements Agent {
 			} else {
 				if ((y - 1) >= 0)
 					if (map[x][y - 1] == 1 && !w.isVisited(cX - 1, cY)) {
-						// move left
+						
 						t1 = 1;
 						d = 2;
 					}
@@ -990,7 +990,7 @@ public class MyAgent implements Agent {
 				if ((x + 1) <= 3) {
 					if ((!w.isVisited(cX - 1, cY - 1) && map[x + 1][y - 1] == 1)
 							|| (map[x][y - 1] == 1 && !w.isVisited(cX - 1, cY))) {
-						// move left
+						
 						t1 = 1;
 						d = 2;
 					}
@@ -999,7 +999,7 @@ public class MyAgent implements Agent {
 				if ((x - 1) >= 0)
 					if ((!w.isVisited(cX - 1, cY + 1) && map[x - 1][y - 1] == 1)
 							|| (map[x][y - 1] == 1 && !w.isVisited(cX - 1, cY))) {
-						// move left
+						
 						t1 = 1;
 						d = 2;
 					}
@@ -1007,7 +1007,7 @@ public class MyAgent implements Agent {
 		} else {
 			if ((y - 1) >= 0)
 				if (map[x][y - 1] == 1 && !w.isVisited(cX - 1, cY)) {
-					// move left
+					
 					t1 = 1;
 					d = 2;
 				}
@@ -1076,7 +1076,7 @@ public class MyAgent implements Agent {
 
 	// -------------------------------------------------------------------------------------------
 
-	// todas as probabilidades das caixas adjacentes são atualizadas quando a caixa
+	// todas as probabilidades das praças prximas são atualizadas quando a caixa
 	// contém
 	// fedor
 	public void strenchMethod(int[][] map, int cX, int cY, int x, int y) {
@@ -1299,7 +1299,7 @@ public class MyAgent implements Agent {
 				if ((y - 1) >= 0) {
 					if ((x + 1) <= 3) {
 						if ((map[x + 1][y - 1] == 1)) {
-							// move left
+						
 							t1 = 1;
 							d = 2;
 
@@ -1308,7 +1308,7 @@ public class MyAgent implements Agent {
 
 					if ((x - 1) >= 0)
 						if ((map[x - 1][y - 1] == 1)) {
-							// move left
+						
 							t1 = 1;
 							d = 2;
 
@@ -1392,10 +1392,8 @@ public class MyAgent implements Agent {
 		int transformX = 15 - cY;
 		int transformY = cX - 1;
 
-		// -----------------------------------------------------------------
 
-		// code given before
-		// Test the environment
+
 		if (w.hasBreeze(cX, cY)) {
 			System.out.println("I am in a Breeze");
 		}

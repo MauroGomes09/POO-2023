@@ -5,7 +5,6 @@ import java.util.Vector;
 
 /**
  * Esta classe lê mapas de um arquivo.
- * 
  */
 public class MapReader {
     private Vector<WorldMap> maps;
@@ -20,12 +19,10 @@ public class MapReader {
     }
 
     /**
-     * Leia os mapas do arquivo de mapa e retorne um vetor
+     * Le os mapas do arquivo de mapa e retorne um vetor
      * com os mapas. O programa é encerrado se ocorrer um erro
      * encontrado.
-     *
-     * @return Uma lista de objetos do mapa ou uma lista vazia se nenhum for
-     *         encontrado.
+ 
      */
     public Vector<WorldMap> readMaps() {
         try {
@@ -36,14 +33,14 @@ public class MapReader {
             while (line != null) {
                 line = line.toUpperCase();
 
-                // New map
+                // novo mapa
                 if (line.startsWith("NEW")) {
                     String[] t = split(line);
                     int size = Integer.parseInt(t[1]);
                     wm = new WorldMap(size);
                 }
 
-                // Pit
+                // Poço
                 if (line.startsWith("P")) {
                     String[] t = split(line);
                     int x = Integer.parseInt(t[1]);
@@ -75,7 +72,7 @@ public class MapReader {
                     wm.addGold(x, y);
                 }
 
-                // End of map
+                // End
                 if (line.startsWith("END")) {
                     maps.add(wm);
                 }
@@ -98,9 +95,6 @@ public class MapReader {
 
     /**
      * Divide uma string com espaços em branco como delimitador.
-     *
-     * @param line A string a ser dividida
-     * @return Tokens
      */
     private String[] split(String line) {
         return line.split(" ");

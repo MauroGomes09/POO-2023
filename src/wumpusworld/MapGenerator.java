@@ -8,10 +8,6 @@ import java.util.Random;
 public class MapGenerator {
     /**
      * Gera um mapa mundial Wumpus aleatório.
-     *
-     * @param seed Semente para o randomizador. A mesma semente sempre resulta no
-     *             mesmo mapa aleatório.
-     * @return Mundo Wumpus gerado
      */
     public static WorldMap getRandomMap(int seed) {
         Random rnd = new Random(seed);
@@ -29,9 +25,6 @@ public class MapGenerator {
 
     /**
      * Adiciona um buraco a um quadrado aleatório.
-     *
-     * @param w Wumpus Mundo
-     * @param r Randomizador
      */
     private static void addRandomPit(WorldMap w, Random r) {
         for (int i = 0; i < 5; i++) {
@@ -49,9 +42,6 @@ public class MapGenerator {
 
     /**
      * Adiciona o Wumpus a um quadrado aleatório.
-     *
-     * @param w Wumpus Mundo
-     * @param r Randomizador
      */
     private static void addRandomWumpus(WorldMap w, Random r) {
         for (int i = 0; i < 2; i++) {
@@ -69,9 +59,6 @@ public class MapGenerator {
 
     /**
      * Adiciona o Monstro 2 a um quadrado aleatório.
-     *
-     * @param w Wumpus World
-     * @param r Randomizador
      */
     private static void addRandomMonstro2(WorldMap w, Random r) {
         for (int i = 0; i < 2; i++) {
@@ -88,10 +75,7 @@ public class MapGenerator {
     }
 
     /**
-     * Adds the gold treasure to a random square.
-     * 
-     * @param w Wumpus World
-     * @param r Randomizer
+        Adiciona o tesouro e casas aleatorias do mapa
      */
     private static void addRandomGold(WorldMap w, Random r) {
         for (int i = 0; i < 2; i++) {

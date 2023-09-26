@@ -64,8 +64,7 @@ public class World {
      * Cria um novo Mundo Wumpus. O Mundo Wumpus trabalha com
      * tamanho de mapa(matriz) 4 ou maior, dependendo da opção escolhida pelo
      * usúario.
-     *
-     * @param size Tamanho do mundo.
+
      */
     public World(int size) {
         this.size = size;
@@ -90,8 +89,7 @@ public class World {
 
     /**
      * Retorna a pontuação atual.
-     *
-     * @return A pontuação.
+
      */
     public int getScore() {
         return score;
@@ -99,8 +97,7 @@ public class World {
 
     /**
      * Retorna o tamanho deste Mundo Wumpus.
-     *
-     * @return O tamanho
+  
      */
     public int getSize() {
         return size;
@@ -108,8 +105,7 @@ public class World {
 
     /**
      * Verifica se o jogo terminou ou não.
-     *
-     * @return True se o jogo terminar, false se não.
+  
      */
     public boolean gameOver() {
         return gameOver;
@@ -117,8 +113,7 @@ public class World {
 
     /**
      * Retorna a posição do jogador X.
-     *
-     * @return posição X.
+
      */
     public int getPlayerX() {
         return pX;
@@ -126,8 +121,7 @@ public class World {
 
     /**
      * Retorna a posição do jogador Y.
-     * 
-     * @return posição Y.
+     
      */
     public int getPlayerY() {
         return pY;
@@ -136,8 +130,7 @@ public class World {
     /**
      * Verifica se o jogador está em um buraco e precisa
      * escalar.
-     *
-     * @return True se estiver em um poço, false caso contrário.
+
      */
     public boolean isInPit() {
         return isInPit;
@@ -145,8 +138,6 @@ public class World {
 
     /**
      * Checks if the player has the arrow left.
-     * 
-     * @return True if player has the arrow, false otherwise.
      */
     public boolean hasArrow() {
         return hasArrow;
@@ -154,8 +145,6 @@ public class World {
 
     /**
      * Verifica se o Wumpus está vivo.
-     *
-     * @return True se Wumpus estiver vivo, false caso contrário.
      */
     public boolean wumpusAlive() {
         return wumpusAlive;
@@ -163,8 +152,7 @@ public class World {
 
     /**
      * Verifica se o Monstro 2 está vivo.
-     *
-     * @return True se Monstro 2 estiver vivo, false caso contrário.
+
      */
     public boolean monster2Alive() {
         return monster2Alive;
@@ -172,8 +160,7 @@ public class World {
 
     /**
      * Verifica se o jogador carrega o tesouro de ouro.
-     *
-     * @return True se o jogador tiver o ouro, false caso contrário.
+ 
      */
     public boolean hasGold() {
         return hasGold;
@@ -181,8 +168,7 @@ public class World {
 
     /**
      * Retorna a direção atual do jogador.
-     *
-     * @return Direção (ver constantes de direção)
+
      */
     public int getDirection() {
         return dir;
@@ -192,10 +178,7 @@ public class World {
      * Verifica se um quadrado tem brisa. Retorna falso
      * se a posição for inválida ou se o quadrado for
      * desconhecido.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se a praça tiver brisa
+
      */
     public boolean hasBreeze(int x, int y) {
         if (!isValidPosition(x, y))
@@ -213,10 +196,7 @@ public class World {
      * Verifica se um quadrado tem mau cheiro. Retorna falso
      * se a posição for inválida ou se o quadrado for
      * desconhecido.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o quadrado tiver mau cheiro
+
      */
     public boolean hasStench(int x, int y) {
         if (!isValidPosition(x, y))
@@ -234,10 +214,7 @@ public class World {
      * Verifica se um quadrado tem brilho. Retorna falso
      * se a posição for inválida ou se o quadrado for
      * desconhecido.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return True se o quadrado tiver glitter
+
      */
     public boolean hasGlitter(int x, int y) {
         if (!isValidPosition(x, y))
@@ -255,10 +232,7 @@ public class World {
      * Verifica se um quadrado possui um buraco. Retorna falso
      * se a posição for inválida ou se o quadrado for
      * desconhecido.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o quadrado tiver um buraco
+
      */
     public boolean hasPit(int x, int y) {
         if (!isValidPosition(x, y))
@@ -276,10 +250,7 @@ public class World {
      * Verifica se o Wumpus está em um quadrado. Retorna falso
      * se a posição for inválida ou se o quadrado for
      * desconhecido.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o Wumpus estiver na praça
+
      */
     public boolean hasWumpus(int x, int y) {
         if (!isValidPosition(x, y))
@@ -297,10 +268,7 @@ public class World {
      * Verifica se o Monstro 2 está em um quadrado. Retorna falso
      * se a posição for inválida ou se o quadrado for
      * desconhecido.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o Monstro 2 estiver na praça
+ 
      */
     public boolean hasMonster2(int x, int y) {
         if (!isValidPosition(x, y))
@@ -316,10 +284,7 @@ public class World {
 
     /**
      * Verifica se o jogador está em um quadrado.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o jogador estiver na praça
+    
      */
     public boolean hasPlayer(int x, int y) {
         if (pX == x && pY == y) {
@@ -330,11 +295,7 @@ public class World {
 
     /**
      * Verifica se uma praça é visitada. Retorna falso
-     * se a posição for inválida.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return True se a praça for visitada
+
      */
     public boolean isVisited(int x, int y) {
         if (!isValidPosition(x, y))
@@ -345,11 +306,7 @@ public class World {
 
     /**
      * Verifica se um quadrado é desconhecido. Retorna falso
-     * se a posição for inválida.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o quadrado for desconhecido
+
      */
     public boolean isUnknown(int x, int y) {
         if (!isValidPosition(x, y))
@@ -363,11 +320,7 @@ public class World {
 
     /**
      * Verifica se um quadrado é válido, ou seja, dentro
-     * os limites do mundo do jogo.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @return Verdadeiro se o quadrado for válido
+
      */
     public boolean isValidPosition(int x, int y) {
         if (x < 1)
@@ -383,10 +336,7 @@ public class World {
 
     /**
      * Adiciona uma percepção a um quadrado.
-     *
-     * @param x posição X
-     * @param e posição Y
-     * @param s Percept a ser adicionado (veja constantes de Percept)
+
      */
     private void append(int x, int y, String s) {
         if (!isValidPosition(x, y))
@@ -399,9 +349,7 @@ public class World {
 
     /**
      * Adiciona o Wumpus a um quadrado.
-     *
-     * @param x posição X
-     * @param y posição Y
+ 
      */
     public void addWumpus(int x, int y) {
         if (!w[x][y].contains(WUMPUS)) {
@@ -415,9 +363,7 @@ public class World {
 
     /**
      * Adiciona o Monstro 2 a um quadrado.
-     *
-     * @param x posição X
-     * @param y posição Y
+    
      */
 
     public void addMonstro2(int x, int y) {
@@ -448,9 +394,7 @@ public class World {
 
     /**
      * Adiciona um buraco a um quadrado.
-     *
-     * @param x posição X
-     * @param e posição Y
+
      */
     public void addPit(int x, int y) {
         if (!w[x][y].contains(PIT)) {
@@ -464,9 +408,7 @@ public class World {
 
     /**
      * Adiciona o tesouro de ouro a um quadrado.
-     *
-     * @param x posição X
-     * @param e posição Y
+  
      */
     public void addGold(int x, int y) {
         if (!w[x][y].contains(GLITTER)) {

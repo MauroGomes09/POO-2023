@@ -6,7 +6,6 @@ import java.awt.Point;
 /**
  * Esta classe representa uma leitura do mapa Wumpus World
  * do arquivo(maps).
- * 
  */
 public class WorldMap {
     private int size;
@@ -17,8 +16,6 @@ public class WorldMap {
 
     /**
      * Cria uma nova instância de mapa.
-     *
-     * @param size Tamanho do mapa mundial
      */
     public WorldMap(int size) {
         this.size = size;
@@ -27,9 +24,6 @@ public class WorldMap {
 
     /**
      * Adiciona o Wumpus.
-     *
-     * @param x posição X
-     * @param e posição Y
      */
     public void addWumpus(int x, int y) {
         wumpus = new Point(x, y);
@@ -42,9 +36,6 @@ public class WorldMap {
 
     /**
      * Adiciona o tesouro de ouro.
-     *
-     * @param x posição X
-     * @param e posição Y
      */
     public void addGold(int x, int y) {
         gold = new Point(x, y);
@@ -52,9 +43,6 @@ public class WorldMap {
 
     /**
      * Adiciona um poço. O mapa pode ter qualquer número de poços.
-     *
-     * @param x posição X
-     * @param e posição Y
      */
     public void addPit(int x, int y) {
         pits.add(new Point(x, y));
@@ -62,8 +50,6 @@ public class WorldMap {
 
     /**
      * Retorna o tamanho do mapa mundial.
-     *
-     * @return O tamanho
      */
     public int getSize() {
 
@@ -72,8 +58,6 @@ public class WorldMap {
 
     /**
      * Retorna posição para o Wumpus.
-     *
-     * @return A posição
      */
     public Point getWumpus() {
         return wumpus;
@@ -81,8 +65,6 @@ public class WorldMap {
 
     /**
      * Retorna posição para o Monster 2.
-     *
-     * @return A posição
      */
     public Point getMonster2() {
         return monstro2;
@@ -90,8 +72,6 @@ public class WorldMap {
 
     /**
      * Retorna a posição do tesouro de ouro.
-     *
-     * @return A posição
      */
     public Point getGold() {
         return gold;
@@ -99,8 +79,6 @@ public class WorldMap {
 
     /**
      * Retorna posições para todos os boxes.
-     *
-     * @return Uma lista de posições para boxes
      */
     public Vector<Point> getPits() {
         return pits;

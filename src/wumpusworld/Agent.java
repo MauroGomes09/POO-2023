@@ -10,6 +10,5 @@ public interface Agent {
      */
     public void doAction();
 
-    /* adiciona um atributo para armazenar o estado da lanterna no agente */
-    public boolean lantenaLigada = false;
+
 }

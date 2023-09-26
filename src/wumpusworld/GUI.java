@@ -31,9 +31,7 @@ public class GUI implements ActionListener {
     private ImageIcon l_player_left;
     private ImageIcon l_player_right;
 
-    /**
-     * Creates and start the GUI.
-     */
+   
     public GUI() {
         if (!checkResources()) {
             JOptionPane.showMessageDialog(null, "Não é possível iniciar a GUI. Ícones ausentes.", "Error",
@@ -63,11 +61,7 @@ public class GUI implements ActionListener {
         createWindow();
     }
 
-    /**
-     * Checks if all resources (icons) are found.
-     * 
-     * @return True if all resources are found, false otherwise.
-     */
+  
     private boolean checkResources() {
         try {
             File f;
@@ -107,9 +101,7 @@ public class GUI implements ActionListener {
         return true;
     }
 
-    /**
-     * Creates all window components.
-     */
+   
     private void createWindow() {
         frame = new JFrame("Wumpus World");
         frame.setSize(1920, 1080);
@@ -138,15 +130,15 @@ public class GUI implements ActionListener {
         }
         frame.getContentPane().add(gamepanel);
 
-        // Add buttons panel
+        // Add buttons
         JPanel buttons = new JPanel();
         buttons.setPreferredSize(new Dimension(820, 740));
         buttons.setLayout(new FlowLayout());
-        // Status label
+        // Status 
         status = new JLabel("", SwingConstants.CENTER);
         status.setPreferredSize(new Dimension(820, 25));
         buttons.add(status);
-        // Score label
+        // Score 
         score = new JLabel("Score: 0", SwingConstants.CENTER);
         score.setPreferredSize(new Dimension(820, 25));
         buttons.add(score);
@@ -222,8 +214,7 @@ public class GUI implements ActionListener {
 
     /**
      * Comandos dos botões
-     * 
-     * @param e Evento executado pelo botão
+
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("TL")) {
@@ -279,9 +270,7 @@ public class GUI implements ActionListener {
         }
     }
 
-    /**
-     * Atualiza a GUI do jogo para um novo estado mundial.
-     */
+    
     private void updateGame() {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {

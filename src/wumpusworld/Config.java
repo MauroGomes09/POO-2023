@@ -8,8 +8,6 @@ import java.io.*;
 public class Config {
     /**
      * Executa o GUI
-     *
-     * @return Opção de execução da aplicação. O padrão é `gui`.
      */
     public static String getOption() {
         String option = "gui";
@@ -33,9 +31,6 @@ public class Config {
 
     /**
      * Retorna o caminho para o arquivo de mapa.
-     * 
-     * @return Caminho para o arquivo de mapa, ou uma string vazia se o arquivo não
-     *         for encontrado.
      */
     public static String getMapfile() {
         String mapfile = "";
