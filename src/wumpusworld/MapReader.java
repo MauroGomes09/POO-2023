@@ -1,6 +1,7 @@
 package wumpusworld;
 
 import java.io.*;
+import java.util.Map;
 import java.util.Vector;
 
 /**
@@ -22,7 +23,7 @@ public class MapReader {
      * Le os mapas do arquivo de mapa e retorne um vetor
      * com os mapas. O programa é encerrado se ocorrer um erro
      * encontrado.
- 
+     * 
      */
     public Vector<WorldMap> readMaps() {
         try {
@@ -85,7 +86,6 @@ public class MapReader {
 
         }
 
-        // Adiciona alguns mapas aleatórios
         maps.add(MapGenerator.getRandomMap(42));
         maps.add(MapGenerator.getRandomMap(1977));
         maps.add(MapGenerator.getRandomMap(1990));
